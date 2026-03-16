@@ -1,23 +1,84 @@
 # Batch Folder Sorter
 
-Desktop tool for preparing ingest batches from CSV metadata.
+Batch Folder Sorter is a desktop app for preparing ingest folders from CSV metadata.
 
-The app supports two workflows:
+It is designed for non-technical users who need to sort large batches of files into a clean folder structure before ingest, archiving, or handover.
 
-- `Standard mode`
-  Sorts files by `Mapnaam` from the CSV into `ROOT/<IE>/<extension>/`.
-- `Artwork batch mode`
-  Matches artwork-style filenames to IE identifiers from the CSV and sorts them into:
-  `ROOT/<IE>/Bewerkt_8bit/` and `ROOT/<IE>/Masters_16bit/`.
+## What The App Does
 
-## Features
+The app takes:
 
-- Desktop GUI built with `PySide6`
-- Background processing with responsive UI
-- CSV validation before moving files
+- a `ROOT` folder with files
+- a CSV file with a `Mapnaam` column
+
+It then matches files to the identifiers in the CSV and moves them into the correct folders automatically.
+
+Files that do not match are moved into `_EXTRA_FILES` instead of being mixed into the main structure.
+
+## Workflows
+
+### Standard Mode
+
+Use this when filenames directly match the values in the CSV.
+
+Example:
+
+```text
+CSV Mapnaam: Pikachu
+File: Pikachu.jpg
+```
+
+Output:
+
+```text
+ROOT/
+  Pikachu/
+    jpg/
+      Pikachu.jpg
+```
+
+### Artwork Batch Mode
+
+Use this for artwork-style batches where the filename contains:
+
+- an IE identifier
+- a sequence number
+- a master suffix like `_M`
+
+Example:
+
+```text
+24_001+FO+FDP_M.tif
+24_001+FO+FDP_B.tif
+24_002+FO+FDP.tif
+```
+
+Output:
+
+```text
+ROOT/
+  24/
+    Masters_16bit/
+      24_001+FO+FDP_M.tif
+    Bewerkt_8bit/
+      24_001+FO+FDP_B.tif
+      24_002+FO+FDP.tif
+```
+
+Notes:
+
+- `Artwork batch mode` keeps the original filenames.
+- `_M` is treated as master.
+- `_B` and files without a suffix go to `Bewerkt_8bit`.
+
+## Main Features
+
+- Clean desktop interface
+- Standard mode and artwork batch mode
+- CSV validation before processing
 - `_EXTRA_FILES` handling for unmatched files
 - `Undo` for the last successful batch
-- PyInstaller spec for packaging
+- Release downloads for macOS and Windows
 
 ## Downloads
 
@@ -43,7 +104,8 @@ Choose the file that matches your system:
 1. Download the correct macOS zip.
 2. Unzip it.
 3. Move `BatchFolderSorter.app` to `Applications` if desired.
-4. If macOS blocks the app on first launch:
+4. Open the app.
+5. If macOS blocks it on first launch:
    Open `System Settings -> Privacy & Security` and allow the app to run.
 
 Note:
@@ -57,9 +119,36 @@ Note:
 3. Open the extracted `BatchFolderSorter` folder.
 4. Run the application executable.
 
-If Windows SmartScreen appears, choose the option to continue only if you trust the release source.
+If Windows SmartScreen appears, continue only if you trust the release source.
 
-## Requirements
+## How To Use
+
+1. Open the app.
+2. Choose the `ROOT` folder.
+3. Choose the CSV file.
+4. Select `Standard mode` or `Artwork batch mode`.
+5. Click `Run Batch`.
+6. Review the result in the `Status` area.
+7. If needed, click `Undo` to restore the last successful batch.
+
+## CSV Requirements
+
+The CSV must contain a `Mapnaam` column.
+
+Example:
+
+```csv
+Mapnaam
+24
+25
+26
+```
+
+If the selected CSV does not match the selected `ROOT` folder, the app will stop and show an error instead of moving everything into `_EXTRA_FILES`.
+
+## For Developers
+
+### Requirements
 
 - Python 3.9+
 
@@ -71,21 +160,21 @@ source venv_gui/bin/activate
 pip install -r requirements.txt
 ```
 
-## Run
+### Run From Source
 
 ```bash
 source venv_gui/bin/activate
 python gui.py
 ```
 
-## Build
+### Build Locally
 
 ```bash
 source venv_gui/bin/activate
 pyinstaller BatchFolderSorter.spec
 ```
 
-## Automated Builds
+### Automated Builds
 
 GitHub Actions is configured to build release artifacts for:
 
@@ -113,21 +202,7 @@ When a tag like `v1.0.0` is pushed, GitHub Actions will:
 - upload the zip files
 - upload `checksums.txt`
 
-## CSV
+## Development Notes
 
-The CSV must contain a `Mapnaam` column.
-
-Example:
-
-```csv
-Mapnaam
-24
-25
-26
-```
-
-## Notes
-
-- `Artwork batch mode` keeps original filenames.
 - `Undo` restores the last successful batch only.
 - The repository ignores local builds, test samples, and virtual environments.
