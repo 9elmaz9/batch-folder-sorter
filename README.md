@@ -45,6 +45,34 @@ source venv_gui/bin/activate
 pyinstaller BatchFolderSorter.spec
 ```
 
+## Automated Builds
+
+GitHub Actions is configured to build release artifacts for:
+
+- `macOS arm64`
+- `macOS x86_64`
+- `Windows x64`
+
+Manual build workflow:
+
+- Open the `Actions` tab in GitHub
+- Run `Build And Release`
+- Download the generated artifacts
+
+Tag-based release workflow:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+When a tag like `v1.0.0` is pushed, GitHub Actions will:
+
+- build all three platform artifacts
+- create or update a GitHub Release
+- upload the zip files
+- upload `checksums.txt`
+
 ## CSV
 
 The CSV must contain a `Mapnaam` column.
