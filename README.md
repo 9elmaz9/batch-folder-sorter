@@ -19,6 +19,46 @@ The app supports two workflows:
 - `Undo` for the last successful batch
 - PyInstaller spec for packaging
 
+## Downloads
+
+Download the latest release from:
+
+- `https://github.com/9elmaz9/batch-folder-sorter/releases`
+
+Choose the file that matches your system:
+
+- `BatchFolderSorter-macos-arm64.zip`
+  For Apple Silicon Macs (`M1`, `M2`, `M3`, `M4`)
+- `BatchFolderSorter-macos-x86_64.zip`
+  For Intel Macs
+- `BatchFolderSorter-windows-x64.zip`
+  For 64-bit Windows systems
+- `checksums.txt`
+  SHA256 checksums for release verification
+
+## First Launch
+
+### macOS
+
+1. Download the correct macOS zip.
+2. Unzip it.
+3. Move `BatchFolderSorter.app` to `Applications` if desired.
+4. If macOS blocks the app on first launch:
+   Open `System Settings -> Privacy & Security` and allow the app to run.
+
+Note:
+
+- The app is not notarized yet, so the first launch may require manual confirmation in macOS.
+
+### Windows
+
+1. Download `BatchFolderSorter-windows-x64.zip`.
+2. Unzip it.
+3. Open the extracted `BatchFolderSorter` folder.
+4. Run the application executable.
+
+If Windows SmartScreen appears, choose the option to continue only if you trust the release source.
+
 ## Requirements
 
 - Python 3.9+
