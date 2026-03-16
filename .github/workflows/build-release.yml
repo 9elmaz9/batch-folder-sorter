@@ -85,6 +85,9 @@ jobs:
         with:
           path: release-artifacts
 
+      - name: List downloaded artifacts
+        run: find release-artifacts -type f | sort
+
       - name: Generate checksums
         run: |
           find release-artifacts -name "*.zip" -type f -print0 | sort -z | xargs -0 sha256sum > release-artifacts/checksums.txt
@@ -92,11 +95,19 @@ jobs:
       - name: Create or update release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
-          gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1 || \
-          gh release create "${GITHUB_REF_NAME}" \
-            --title "Batch Folder Sorter ${GITHUB_REF_NAME}" \
-            --notes "Cross-platform release for macOS arm64, macOS x86_64, and Windows x64."
+          mapfile -t files < <(find release-artifacts -name "*.zip" -type f | sort)
 
-          shopt -s globstar nullglob
-          gh release upload "${GITHUB_REF_NAME}" release-artifacts/**/*.zip release-artifacts/checksums.txt --clobber
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No zip artifacts were downloaded."
+            exit 1
+          fi
+
+          if ! gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+            gh release create "${GITHUB_REF_NAME}" \
+              --title "Batch Folder Sorter ${GITHUB_REF_NAME}" \
+              --notes "Cross-platform release for macOS arm64, macOS x86_64, and Windows x64."
+          fi
+
+          gh release upload "${GITHUB_REF_NAME}" "${files[@]}" release-artifacts/checksums.txt --clobber
