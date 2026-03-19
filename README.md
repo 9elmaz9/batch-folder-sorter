@@ -1,8 +1,30 @@
 # Batch Folder Sorter
 
-Batch Folder Sorter is a desktop app for preparing ingest folders from CSV metadata.
+Batch Folder Sorter is a desktop helper app for preparing ingest folders from CSV metadata.
 
-It is designed for non-technical users who need to sort large batches of files into a clean folder structure before ingest, archiving, or handover.
+It is meant for people who need to sort large batches of files into a clean folder structure before ingest, archiving, delivery, or internal review, without having to do the folder work manually.
+
+## Why This Tool Exists
+
+When file batches arrive, they are often:
+
+- mixed together in one folder
+- inconsistently named
+- partially matching the metadata
+- full of files that do not belong in the final ingest structure
+
+Batch Folder Sorter helps turn that messy starting point into a structured output that is easier to review and ingest.
+
+## Important
+
+This app is a helper tool, not a replacement for collection review or ingest quality control.
+
+Please keep in mind:
+
+- always work on a copy of your source material when possible
+- always review the output before final ingest or delivery
+- unmatched files may be moved to `_EXTRA_FILES`, so they still need human review
+- `Undo` restores only the last successful batch action
 
 ## What The App Does
 
@@ -67,9 +89,9 @@ ROOT/
 
 Notes:
 
-- `Artwork batch mode` keeps the original filenames.
-- `_M` is treated as master.
-- `_B` and files without a suffix go to `Bewerkt_8bit`.
+- `Artwork batch mode` keeps the original filenames
+- `_M` is treated as master
+- `_B` and files without a suffix go to `Bewerkt_8bit`
 
 ## Main Features
 
@@ -204,5 +226,5 @@ When a tag like `v1.0.0` is pushed, GitHub Actions will:
 
 ## Development Notes
 
-- `Undo` restores the last successful batch only.
-- The repository ignores local builds, test samples, and virtual environments.
+- `Undo` restores the last successful batch only
+- The repository ignores local builds, test samples, and virtual environments
