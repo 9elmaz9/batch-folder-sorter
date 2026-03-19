@@ -157,7 +157,7 @@ class MainWindow(QMainWindow):
 
         self.title_label = QLabel("Batch Folder Sorter")
         self.subtitle_label = QLabel(
-            "Memoo ingest preparation for standard sorting and artwork batch processing."
+            "meemoo ingest preparation for standard sorting and artwork batch processing"
         )
         title_stack.addWidget(self.title_label)
         title_stack.addWidget(self.subtitle_label)
