@@ -2,6 +2,8 @@
 
 Batch Folder Sorter is a desktop helper app for preparing ingest folders from CSV metadata.
 
+It is intended as a helper tool for working with the meemoo instroom tool workflow.
+
 It is meant for people who need to sort large batches of files into a clean folder structure before ingest, archiving, delivery, or internal review, without having to do the folder work manually.
 
 ## Why This Tool Exists
@@ -46,17 +48,17 @@ Use this when filenames directly match the values in the CSV.
 Example:
 
 ```text
-CSV Mapnaam: Pikachu
-File: Pikachu.jpg
+CSV Mapnaam: ITEM_001
+File: ITEM_001.jpg
 ```
 
 Output:
 
 ```text
 ROOT/
-  Pikachu/
+  ITEM_001/
     jpg/
-      Pikachu.jpg
+      ITEM_001.jpg
 ```
 
 ### Artwork Batch Mode
@@ -70,21 +72,21 @@ Use this for artwork-style batches where the filename contains:
 Example:
 
 ```text
-24_001+FO+FDP_M.tif
-24_001+FO+FDP_B.tif
-24_002+FO+FDP.tif
+OBJ001_001+FO+FDP_M.tif
+OBJ001_001+FO+FDP_B.tif
+OBJ001_002+FO+FDP.tif
 ```
 
 Output:
 
 ```text
 ROOT/
-  24/
+  OBJ001/
     Masters_16bit/
-      24_001+FO+FDP_M.tif
+      OBJ001_001+FO+FDP_M.tif
     Bewerkt_8bit/
-      24_001+FO+FDP_B.tif
-      24_002+FO+FDP.tif
+      OBJ001_001+FO+FDP_B.tif
+      OBJ001_002+FO+FDP.tif
 ```
 
 Notes:
@@ -161,12 +163,22 @@ Example:
 
 ```csv
 Mapnaam
-24
-25
-26
+OBJ001
+OBJ002
+OBJ003
 ```
 
 If the selected CSV does not match the selected `ROOT` folder, the app will stop and show an error instead of moving everything into `_EXTRA_FILES`.
+
+## Screenshots
+
+### Standard mode: base structure by extensions
+
+Add screenshot here.
+
+### Artwork batch mode: structure by artwork filenames
+
+Add screenshot here.
 
 ## For Developers
 
