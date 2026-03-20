@@ -108,17 +108,17 @@ Notes:
 
 Download the latest release from:
 
-- `https://github.com/9elmaz9/batch-folder-sorter/releases`
+- [GitHub Releases](https://github.com/9elmaz9/batch-folder-sorter/releases)
 
 Choose the file that matches your system:
 
-- `BatchFolderSorter-macos-arm64.zip`
+- `BatchFolderSorter-macos-arm64.zip`  
   For Apple Silicon Macs (`M1`, `M2`, `M3`, `M4`)
-- `BatchFolderSorter-macos-x86_64.zip`
+- `BatchFolderSorter-macos-x86_64.zip`  
   For Intel Macs
-- `BatchFolderSorter-windows-x64.zip`
+- `BatchFolderSorter-windows-x64.zip`  
   For 64-bit Windows systems
-- `checksums.txt`
+- `checksums.txt`  
   SHA256 checksums for release verification
 
 ## First Launch
@@ -170,7 +170,7 @@ OBJ003
 
 If the selected CSV does not match the selected `ROOT` folder, the app will stop and show an error instead of moving everything into `_EXTRA_FILES`.
 
-## 
+## Screenshots
 
 ### Standard mode: base structure by extensions
 
