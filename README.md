@@ -170,7 +170,7 @@ OBJ003
 
 If the selected CSV does not match the selected `ROOT` folder, the app will stop and show an error instead of moving everything into `_EXTRA_FILES`.
 
-## Screenshots
+## 
 
 ### Standard mode: base structure by extensions
 
