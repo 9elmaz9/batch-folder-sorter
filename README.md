@@ -174,11 +174,19 @@ If the selected CSV does not match the selected `ROOT` folder, the app will stop
 
 ### Standard mode: base structure by extensions
 
-Add screenshot here.
+![Image 19-03-2026 at 17 15](https://github.com/user-attachments/assets/5d2b2ce3-c939-4e35-804a-1f7046777df2)
 
+![Image 19-03-2026 at 17 17](https://github.com/user-attachments/assets/24c75d1c-fa40-4bbf-bb78-32bbbd03d089)
+
+![Image 19-03-2026 at 17 18](https://github.com/user-attachments/assets/7e60d95b-16d1-43d8-884f-787d7f2cf0a8)
+ 
 ### Artwork batch mode: structure by artwork filenames
 
-Add screenshot here.
+![Image 19-03-2026 at 17 19](https://github.com/user-attachments/assets/225b823e-449f-4784-923b-83fcf18ca2d4)
+
+![Image 19-03-2026 at 17 20](https://github.com/user-attachments/assets/7f6f95cd-2b18-4364-836c-ce0aff2ae7e6)
+
+![Image 19-03-2026 at 17 20 (1)](https://github.com/user-attachments/assets/4cb2f6f2-379a-4b52-a22e-ea1200001cd6)
 
 ## For Developers
 
