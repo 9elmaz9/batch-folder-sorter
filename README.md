@@ -23,6 +23,7 @@ This app is a helper tool, not a replacement for collection review or ingest qua
 
 Please keep in mind:
 
+- this tool modifies file structures (creates folders and moves files), so if you are unsure, please use it on a copy of your data
 - always work on a copy of your source material when possible
 - always review the output before final ingest or delivery
 - unmatched files may be moved to `_EXTRA_FILES`, so they still need human review
